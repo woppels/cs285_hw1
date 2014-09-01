@@ -14,19 +14,37 @@ public class HW1_P2_EsparzaMichael {
     return cipher.doFinal(cipherBlocks);
   }
 
+  public static boolean isAsciiPrintable(byte ch) {
+      return ch > 31 && ch < 127;
+  }
   public static void main(String [] args) {
     try {
       byte[] key = new byte[16];
       
-      key[0] = 0; // such encryption, many combinations, so secure, wow!
-      key[1] = 0;
-      key[2] = 0;
-      
-      for (int i = 3; i < 16; i++)
-        key[i] = (byte)(key[i - 1] ^ key[i - 3]); 
+      for(byte i = -11; i < 13; i++)
+      {
+    	  for(byte j = 0; j < 60; j++)
+    	  {
+    		  for(byte k = 0; k < 60; k++)
+    		  {
+    			  key[0] = i; key[1] = j; key[2] = k;
+    			  for(int x = 3; x < 16; x++) { key[x] = (byte)(key[x - 1] ^ key[x - 3]); }
+    			  boolean check = true; 
+    		      byte[] plainText = decrypt(cipherText, key);
+    		      for(int y = 0; y < plainText.length; y++) 
+    		      {
+    		    	  if(isAsciiPrintable(plainText[y]) == false) { check = false; }
+    		      }
+    		      if(check)
+    		      {
+    		    	  System.out.println(new String(plainText, "UTF-8"));
+    		    	  System.out.println();
+    		      }
+    		  }
+    	  }
+      }
         
-      byte[] plainText = decrypt(cipherText, key);
-      System.out.println(new String(plainText, "UTF-8"));
+      if(isAsciiPrintable(cipherText[0]) == true) System.out.println("hello");
     } catch (Exception e) {
       e.printStackTrace();
     } 
