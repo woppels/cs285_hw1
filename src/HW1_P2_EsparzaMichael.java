@@ -17,23 +17,26 @@ public class HW1_P2_EsparzaMichael {
   public static boolean isAsciiPrintable(byte ch) {
       return ch > 31 && ch < 127;
   }
+  
   public static void main(String [] args) {
     try {
       byte[] key = new byte[16];
       
-      for(byte i = -11; i < 13; i++)
+      // Iterate through all possible times (hours, minutes, seconds)
+      for(int i = 0; i < 24; i++) // I was iterating through as byte i = -11...
       {
-    	  for(byte j = 0; j < 60; j++)
+    	  for(int j = 0; j < 60; j++)
     	  {
-    		  for(byte k = 0; k < 60; k++)
+    		  for(int k = 0; k < 60; k++)
     		  {
-    			  key[0] = i; key[1] = j; key[2] = k;
+    			  key[0] = (byte)i; key[1] = (byte)j; key[2] = (byte)k;
     			  for(int x = 3; x < 16; x++) { key[x] = (byte)(key[x - 1] ^ key[x - 3]); }
     			  boolean check = true; 
     		      byte[] plainText = decrypt(cipherText, key);
     		      for(int y = 0; y < plainText.length; y++) 
     		      {
-    		    	  if(isAsciiPrintable(plainText[y]) == false) { check = false; }
+    		    	  if(plainText[y] < 0) { plainText[y] = (byte) (plainText[y]); }
+    		    	  //if(isAsciiPrintable(plainText[y]) == false || plainText[y] <0) { plainText[y] = (byte) (-1 * plainText[y]); }
     		      }
     		      if(check)
     		      {
@@ -45,6 +48,10 @@ public class HW1_P2_EsparzaMichael {
       }
         
       if(isAsciiPrintable(cipherText[0]) == true) System.out.println("hello");
+      
+      byte[] help = new byte[] { 56 };
+      String str = new String(help, "UTF-8");
+      System.out.println(str);
     } catch (Exception e) {
       e.printStackTrace();
     } 
