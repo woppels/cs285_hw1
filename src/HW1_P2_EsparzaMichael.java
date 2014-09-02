@@ -14,44 +14,36 @@ public class HW1_P2_EsparzaMichael {
     return cipher.doFinal(cipherBlocks);
   }
 
-  public static boolean isAsciiPrintable(byte ch) {
-      return ch > 31 && ch < 127;
-  }
-  
   public static void main(String [] args) {
     try {
       byte[] key = new byte[16];
       
       // Iterate through all possible times (hours, minutes, seconds)
-      for(int i = 0; i < 24; i++) // I was iterating through as byte i = -11...
+      // I switched from byte i => int i because I am not sure how java increments byte variables
+      for(int i = 0; i <= 24; i++) 
       {
-    	  for(int j = 0; j < 60; j++)
+    	  for(int j = 0; j <= 60; j++)
     	  {
-    		  for(int k = 0; k < 60; k++)
+    		  for(int k = 0; k <= 60; k++)
     		  {
-    			  key[0] = (byte)i; key[1] = (byte)j; key[2] = (byte)k;
+    			  key[0] = (byte) i; key[1] = (byte) j; key[2] = (byte) k;
+    			  
+    			  // Check that the range of keys printed is: 0-24,0-60,0-60
+    			  for(int y = 0; y < 3; y++) System.out.print(key[y]+" ");
+    			  System.out.println();
+    			  
+    			  // Initialize rest of the key based on the first three bytes. 
     			  for(int x = 3; x < 16; x++) { key[x] = (byte)(key[x - 1] ^ key[x - 3]); }
-    			  boolean check = true; 
-    		      byte[] plainText = decrypt(cipherText, key);
-    		      for(int y = 0; y < plainText.length; y++) 
-    		      {
-    		    	  if(plainText[y] < 0) { plainText[y] = (byte) (plainText[y]); }
-    		    	  //if(isAsciiPrintable(plainText[y]) == false || plainText[y] <0) { plainText[y] = (byte) (-1 * plainText[y]); }
-    		      }
-    		      if(check)
-    		      {
-    		    	  System.out.println(new String(plainText, "UTF-8"));
-    		    	  System.out.println();
-    		      }
+    		      // Decrypt using the time of day guessed.
+    			  byte[] plainText = decrypt(cipherText, key);
+    		      System.out.println(new String(plainText, "UTF-8"));
+    		      System.out.println();
+    		      
     		  }
     	  }
       }
-        
-      if(isAsciiPrintable(cipherText[0]) == true) System.out.println("hello");
-      
-      byte[] help = new byte[] { 56 };
-      String str = new String(help, "UTF-8");
-      System.out.println(str);
+      System.out.println("Done.");
+              
     } catch (Exception e) {
       e.printStackTrace();
     } 
