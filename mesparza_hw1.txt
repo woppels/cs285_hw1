@@ -1,0 +1,31 @@
+1. 
+a. Assumed TVC corresponded to THE. Used this for second part of question 1.
+	So T:T, V:H, C:E. Used V,C to H,E to calculate second part.
+b. Let V -> H, C -> E, and E(x) = (ax + b) mod 26.
+	So for V->H, this implies: E(21) = 7 and
+	   for C->E, this implies: E(2) = 4. 
+	So a * 21 + b ≡ 7
+         -(a * 2  + b)≡ 4
+	_________________
+	          19a ≡ 3 mod 26. 
+	Use this to solve for a: a = 7. Plug this into one of the b equations
+	and we find that b = -10. 
+	This gives E(x) = (7x - 10) mod 26. 
+c. 
+	THE TREASURE CHEST IS BURIED HERE:
+	SAIL FROM SKELETON ISLAND TO THE EAST-SOUTHEAST.
+	AFTER TWO DAYS, YOU WILL FIND A DESERTED ISLAND.
+	CLIMB TO THE HIGHEST POINT OF THE ISLAND AND LOOK FOR A LARGE CLIFF TO THE NORTH.
+	WALK A HUNDRED YARDS TOWARDS THE CLIFF AND STOP AT THE TALL TREE.
+	WALK TEN FEET TO THE EAST, AND YOU WILL FIND A ROCK WITH AN > PAINTED ON IT.
+	THE TREASURE IS BURIED ONE FOOT BELOW THE ROCK.
+
+2.
+a. Effective length of the key is 3. The key is dependent on the first three bytes of the key
+	as given by the key[i] equation for i > 2. 
+b. Probability of one byte being randomly chosen: Let 1/(2^8) = Px = 1/256. 
+	where is 8 is because of the number of bits.
+	There are 48 independent bytes that can be randomly chosen: 
+	giving Px^48, which is (1/256)^48. 
+c. Key was made at: 13:03:50. 
+   Plaintext: BEGIN { Command: Shutdown; Password: 42 } END 
