@@ -24,7 +24,7 @@ c.
 a. Effective length of the key is 3. The key is dependent on the first three bytes of the key
 	as given by the key[i] equation for i > 2. 
 b. Probability of one byte being randomly chosen: Let 1/(2^8) = X = 1/256. 
-	where is 8 is because of the number of bits.
+	where 8 is because of the number of bits in a byte.
 	There are 48 independent bytes that can be randomly chosen: 
 	giving X^48, which is (1/256)^48. 
 c. Key was made at: 13:03:50. 
