@@ -1,6 +1,6 @@
 1. 
 a. Assumed TVC corresponded to THE. Used this for second part of question 1.
-	So T:T, V:H, C:E. Used V,C to H,E to calculate second part.
+	So T:T, V:H, C:E. Used V -> H & C -> E to calculate second part.
 b. Let V -> H, C -> E, and E(x) = (ax + b) mod 26.
 	So for V->H, this implies: E(21) = 7 and
 	   for C->E, this implies: E(2) = 4. 
@@ -22,7 +22,10 @@ c.
 
 2.
 a. Effective length of the key is 3. The key is dependent on the first three bytes of the key
-	as given by the key[i] equation for i > 2. 
+	as given by the key[i] equation for i > 2. The length of the key is this also because 
+	to brute force this ciphertext, we only needed to brute force 3 bytes, not the full 16
+	since we could just iterate over the 24 * 60 * 60 possibilities rather than 2^16 
+	possibilities.  
 b. Probability of one byte being randomly chosen: Let 1/(2^8) = X = 1/256. 
 	where 8 is because of the number of bits in a byte.
 	There are 48 independent bytes that can be randomly chosen: 

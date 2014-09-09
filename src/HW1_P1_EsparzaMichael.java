@@ -13,7 +13,7 @@ public class HW1_P1_EsparzaMichael {
   private static char decrypt(char cipher) {
     int index = (int) cipher - alphaIndex;
     // ... decrypt ...
-    // There is a scan of my handwritten work in the .zip file. 
+    // Notes are in the submission text file. 
     int temp = (7 * index - 10) % alphaLength;
     return (char) (temp + alphaIndex);
   }
