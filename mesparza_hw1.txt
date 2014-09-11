@@ -22,11 +22,9 @@ c.
 
 2.
 a. Effective length of the key is x in 2^x, where x is the approximate number of bits that would be 
-	needed to represent the 24 * 60 * 60 possibilities for time from the first three 
-	bytes of the key. A day has 86400 seconds, so log2(86400) ≈ 17 bits will be sufficient to represent
-	the seconds within a day. As such, the effective length of the key is 17 bits.
-	If the entirety of the key were chosen randomly, the effective length would be 128 due
-	to the AES key being 16 bytes (128 bits).    
+	needed to represent the 24 * 60 * 60 = 86400 possibilities for time from the first three 
+	bytes of the key. So log2(86400) ≈ 17 bits will be sufficient to represent
+	the seconds within a day, about 2^17. As such, the effective length of the key is 17 bits.    
 b. Probability of one byte being randomly chosen: Let 1/(2^8) = X = 1/256. 
 	where 8 is because of the number of bits in a byte.
 	There are 48 independent bytes that can be randomly chosen: 
