@@ -24,11 +24,11 @@ public class HW1_P2_EsparzaMichael {
 		  byte[] key = new byte[16];
 		  
 		  // Iterate through all possible times (hours, minutes, seconds)
-		  for(int i = 0; i <= 24; i++) 
+		  for(int i = 0; i < 24; i++) 
 		  {
-			  for(int j = 0; j <= 60; j++)
+			  for(int j = 0; j < 60; j++)
 			  {
-				  for(int k = 0; k <= 60; k++)
+				  for(int k = 0; k < 60; k++)
 				  {
 					  key[0] = (byte) i; key[1] = (byte) j; key[2] = (byte) k;
 	      			  
